@@ -1,5 +1,8 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+// import axios from 'axios'
+
+// import actions from '@/store/actions'
 
 Vue.use(Vuex)
 
@@ -14,12 +17,11 @@ export default new Vuex.Store({
   },
   actions: {
     getMessages (context) {
-      fetch('https://api.coindesk.com/v1/bpi/currentprice.json')
+      fetch('http://127.0.0.1:8000/connection')
         .then((res) => res.json())
         .then((data) => {
-          if (data) {
-            context.commit('setMessages', data.bpi.EUR.rate)
-          }
+          console.log(data)
+          context.commit('setMessages', data[1])
         })
     }
   }

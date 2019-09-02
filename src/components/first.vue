@@ -1,11 +1,17 @@
 
-<template>
+<template onload="alert('onload callback fired');">
   <div class="hello" v-loading="loading">
 
 <el-page-header @back="goBack" content="detail">
 </el-page-header>
     <p>{{msg}} </p>
     <p>{{messages}} </p>
+
+    <ul>
+        <li v-for="messege in messeges" :key="messege.url" >
+            {{ messege.url }}  -   {{ messege.text }}
+        </li>
+    </ul>
     <p><router-link :to="{ name: 'second' }">second</router-link></p>
 
     first component
@@ -83,6 +89,7 @@ export default {
       another: 'another messege',
       some_other_messege: 'hello Darkness my old Friend',
       loading: true
+
     }
   },
   computed: mapState(['messages']),
